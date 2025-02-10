@@ -1,0 +1,16 @@
+- title: "FHIR Solution for Rehabilitation"
+  team: ["Team member 1", "Team member 2"]
+  description: "A SMART-on-FHIR app for managing patient discharge data."
+  image: "/assets/images/project1.jpg"
+  tags:
+    - Tag 1
+    - Tag 2
+
+- title: "Risk Calculator"
+  team: ["Team Beta"]
+  description: "An AI-based tool for risk analysis."
+  image: "/assets/images/project2.jpg"
+  tags:
+    - Tag 1
+
+  
