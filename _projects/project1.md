@@ -11,7 +11,7 @@ image: "/assets/images/project1.jpg"
 screenshots: 
     - "/assets/images/project1-screenshot1.jpg"
     - "/assets/images/project1-screenshot2.jpg"
-app_link: "https:/google.com"
+app_link: "https://www.google.com"
 permalink: /projects/project1/
 tags:
     - Care Coordination
