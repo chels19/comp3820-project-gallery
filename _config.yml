@@ -21,7 +21,7 @@
 title: "COMP3820 Project Gallery"
 description: "A showcase of COMP3820 student projects"
 email: your-email@example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/comp3820-project-gallery" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
