@@ -141,36 +141,48 @@
   <div class="container">
     <!-- Filters Section -->
     <div class="filters">
-        <div class="filter-group">
-          <label for="year">Year</label>
-          <select id="year">
-            <option value="all">Select</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label for="category">Category</label>
-          <select id="category">
-            <option value="all">Select</option>
-            <option value="Healthcare">Healthcare</option>
-            <option value="AI">AI</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label for="design-for">Design For</label>
-          <select id="design-for">
-            <option value="all">Select</option>
-            <option value="Students">Students</option>
-            <option value="Professionals">Professionals</option>
-          </select>
-        </div>
+      <div class="filter-group">
+        <label for="year">Year</label>
+        <select id="year">
+          <option value="all">All</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="category">Category</label>
+        <select id="category">
+          <option value="all">All</option>
+          <option value="Care Coordination">Care Coordination</option>
+          <option value="Clinical Research">Clinical Research</option>
+          <option value="Data Visualization">Data Visualization</option>
+          <option value="Disease Management">Disease Management</option>
+          <option value="Genomics">Genomics</option>
+          <option value="Medication">Medication</option>
+          <option value="Patient Engagement">Patient Engagement</option>
+          <option value="Population Health">Population Health</option>
+          <option value="Risk Calculation">Risk Calculation</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label for="design-for">Designed For</label>
+        <select id="design-for">
+          <option value="all">All</option>
+          <option value="Clinicians">Clinicians</option>
+          <option value="Patients">Patients</option>
+          <option value="Patients & Clinicians">Patients & Clinicians</option>
+        </select>
+      </div>
     </div>
 
     <!-- Projects Grid -->
     <div class="projects-grid">
-      {% for project in site.data.projects %}
-      <a href="{{ project.link }}" class="project-card">
+      {% for project in site.projects %}
+      <a href="{{ project.url }}" 
+         class="project-card" 
+         data-year="{{ project.year }}" 
+         data-design="{{ project.designed_for }}" 
+         data-category="{{ project.tags | join: ',' | downcase }}">
         <img src="{{ project.image }}" alt="{{ project.title }}">
         <div class="project-content">
           <h3>{{ project.title }}</h3>
@@ -186,5 +198,47 @@
       {% endfor %}
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const yearFilter = document.getElementById("year");
+      const categoryFilter = document.getElementById("category");
+      const designFilter = document.getElementById("design-for");
+
+      const projectCards = document.querySelectorAll(".project-card");
+
+      function filterProjects() {
+        const year = yearFilter.value.toLowerCase();
+        const category = categoryFilter.value.toLowerCase();
+        const design = designFilter.value.toLowerCase();
+
+        projectCards.forEach((card) => {
+          const projectYear = card.getAttribute("data-year").toLowerCase();
+          const projectCategories = card
+            .getAttribute("data-category")
+            .toLowerCase()
+            .split(","); // Assuming categories are stored as a comma-separated string
+          const projectDesign = card.getAttribute("data-design").toLowerCase();
+
+          const categoryMatch =
+            category === "all" || projectCategories.includes(category);
+
+          if (
+            (year === "all" || projectYear === year) &&
+            categoryMatch &&
+            (design === "all" || projectDesign === design)
+          ) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      yearFilter.addEventListener("change", filterProjects);
+      categoryFilter.addEventListener("change", filterProjects);
+      designFilter.addEventListener("change", filterProjects);
+    });
+  </script>
 </body>
 </html>

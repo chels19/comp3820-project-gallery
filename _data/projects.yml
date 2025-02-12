@@ -5,7 +5,7 @@
   tags:
     - Tag 1
     - Tag 2
-
+  url: /projects/project1/
 - title: "Risk Calculator"
   team: ["Team Beta"]
   description: "An AI-based tool for risk analysis."

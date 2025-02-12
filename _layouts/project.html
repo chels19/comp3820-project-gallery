@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <style>
+    /* Global Styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    /* Header Section */
+    .header {
+      background-color: #d3d3d3; /* Light grey background for title */
+      padding: 20px 40px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center; /* Align items vertically in the center */
+      gap: 10px; /* Add space between elements */
+    }
+
+    .return-icon {
+      width: 30px; /* Circle size */
+      height: 30px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%; /* Make it a circle */
+      text-decoration: none;
+      background-color: white; /* Transparent background */
+      transition: all 0.3s ease;
+      position: relative; /* For positioning the arrow */
+    }
+
+    .return-icon::before {
+      content: '<'; /* Arrow icon */
+      font-size: 20px;
+      color: #333; /* Arrow color */
+      position: absolute;
+    }
+
+    .return-icon:hover {
+      background-color: #d3d3d3; /* Light grey on hover */
+      transform: scale(1.1); /* Slight zoom effect */
+    }
+
+    .return-icon:hover::before {
+      color: #800080; /* Purple arrow on hover */
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: #333;
+      flex-grow: 1; /* Allow the title to take up remaining space */
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* Title and Try App Section */
+    .title-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .title-section .title {
+      font-size: 30px;
+      font-weight: bold;
+      color: #800080;
+    }
+
+    .title-section .meta {
+      font-size: 18px;
+      color: #555;
+      margin-top: 5px;
+    }
+
+    /* Try App Button Styling */
+    .title-section .try-app {
+      background-color: #800080; /* Dark purple background */
+      color: #ffffff; /* White text */
+      font-size: 18px;
+      font-weight: bold;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease; /* Smooth transition for hover */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .title-section .try-app:hover {
+      background-color: #f5e0f7; /* Light purple background */
+      color: #800080; /* Purple text */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+      transform: translateY(-2px); /* Slight lift effect */
+    }
+
+    /* Video Section */
+    .video-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .video-section iframe, .video-section video {
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Description Section */
+    .description {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .description p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .description h2 {
+      font-size: 15px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    /* Screenshots Section */
+    .screenshots-container {
+      background-color: #fff;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .screenshots {
+      display: flex; /* Arrange images in a row */
+      flex-wrap: wrap; /* Allow wrapping to the next line */
+      gap: 20px; /* Add space between images */
+      justify-content: center; /* Center-align the images */
+    }
+
+    .screenshots img {
+      max-width: 500px; /* Adjust size of images */
+      height: auto; /* Maintain aspect ratio */
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <a href="/" class="return-icon" aria-label="Return to Home"></a>
+    <h1>COMP3820 Project Gallery</h1>
+  </div>
+
+  <div class="container">
+    <!-- Title Section -->
+    <div class="title-section">
+      <div>
+        <div class="title">{{ page.title }}</div>
+        <div class="meta">
+          Team: {{ page.team | join: ", " }}<br>
+          Mentor: {{ page.mentor }} <br>
+          {{ page.year }}
+        </div>
+      </div>
+      <a href="{{ page.app_link }}" class="try-app">Try App</a>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video-section">
+      {% if page.youtube %}
+      <iframe src="https://www.youtube.com/embed/{{ page.youtube }}" allowfullscreen></iframe>
+      {% else %}
+      <video controls>
+        <source src="{{ page.video }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      {% endif %}
+    </div>
+
+    <!-- Description Section -->
+    <h2>Project Description</h2>
+    <div class="description">
+      <p>{{ page.description }}</p>
+    </div>
+
+    <!-- Screenshots Section -->
+    <div class="screenshots-container">
+      <div class="screenshots">
+        {% for screenshot in page.screenshots %}
+        <img src="{{ screenshot }}" alt="Screenshot">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>
