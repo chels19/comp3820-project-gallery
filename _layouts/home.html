@@ -130,6 +130,18 @@
       border-radius: 15px;
       margin-right: 5px;
     }
+
+    .project-team {
+      font-size: 18px;
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .project-description {
+      font-size: 14px;
+      color: #666;
+    }
   </style>
 </head>
 <body>
@@ -193,15 +205,15 @@
       <img src="{{ site.baseurl }}{{ project.image }}" alt="{{ project.title }}">
         <div class="project-content">
           <h3>{{ project.title }}</h3>
-          <p>Team: {{ project.team | join: ", " }}</p>
+          <p class="project-team">Team: {{ project.team | join: ", " }}</p>
 
           
           <!-- Truncated Description -->
           {% assign max_length = 150 %}
           {% if project.description.size > max_length %}
-            <p>{{ project.description | truncatewords: 25 }}...</p>
+            <p class="project-description">{{ project.description | truncatewords: 25 }}...</p>
           {% else %}
-            <p>{{ project.description }}</p>
+            <p class="project-description">{{ project.description }}</p>
           {% endif %}
           <div class="tags">
             {% for tag in project.tags %}
