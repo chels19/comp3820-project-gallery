@@ -152,7 +152,6 @@
       <div class="filter-group">
         <label for="category">Category</label>
         <select id="category">
-          <option value="all">All</option>
           <option value="Care Coordination">Care Coordination</option>
           <option value="Clinical Research">Clinical Research</option>
           <option value="Data Visualization">Data Visualization</option>
@@ -162,6 +161,13 @@
           <option value="Patient Engagement">Patient Engagement</option>
           <option value="Population Health">Population Health</option>
           <option value="Risk Calculation">Risk Calculation</option>
+          <option value="COVID-19">COVID-19</option>
+          <option value="Telehealth">Telehealth</option>
+          <option value="AI">AI</option>
+          <option value="Decision Support">Decision Support</option>
+          <option value="Interoperability">Interoperability</option>
+          <option value="Mental Health">Mental Health</option>
+          <option value="Wearable Data">Wearable Data</option>
         </select>
       </div>
       <div class="filter-group">
@@ -187,7 +193,15 @@
         <div class="project-content">
           <h3>{{ project.title }}</h3>
           <p>Team: {{ project.team | join: ", " }}</p>
-          <p>{{ project.description }}</p>
+
+          
+          <!-- Truncated Description -->
+          {% assign max_length = 150 %}
+          {% if project.description.size > max_length %}
+            <p>{{ project.description | truncatewords: 25 }}...</p>
+          {% else %}
+            <p>{{ project.description }}</p>
+          {% endif %}
           <div class="tags">
             {% for tag in project.tags %}
             <span class="tag">{{ tag }}</span>
