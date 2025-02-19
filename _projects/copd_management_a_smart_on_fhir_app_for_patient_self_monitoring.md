@@ -13,7 +13,7 @@ screenshots:
     - /assets/images/copd3.jpg
     - /assets/images/copd2.jpg
 app_link: "https://meld.interop.community/COPDMgntApp/apps"  # Keeps it empty if not provided
-permalink: /projects/copd_management:_a_smart_on_fhir_app_for_patient_self-monitoring/
+permalink: /projects/copd_management_a_smart_on_fhir_app_for_patient_self-monitoring/
 tags:
     - Patient Engagement
     - Disease Management
