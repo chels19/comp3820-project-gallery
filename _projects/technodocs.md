@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "TechnoDocs"
-team: "Connor Shane Morrison, Zinan Guo, Chen Chen, Dai-Yun, Yiu (Zoe), Pramith Kodali "
+team: "Connor Shane Morrison, Zinan Guo, Chen Chen, Dai-Yun Yiu (Zoe), Pramith Kodali "
 year: 2024
 mentor: "Dr Vikram Joshi (Metro North Health)"
 description: >
