@@ -15,48 +15,48 @@
 
     /* Header Section */
     .header {
-      background-color: #d3d3d3; /* Light grey background for title */
+      background-color: #d3d3d3;
       padding: 20px 40px;
       margin-bottom: 20px;
       display: flex;
-      align-items: center; /* Align items vertically in the center */
-      gap: 10px; /* Add space between elements */
+      align-items: center;
+      gap: 10px;
     }
 
     .return-icon {
-      width: 30px; /* Circle size */
+      width: 30px;
       height: 30px;
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      border-radius: 50%; /* Make it a circle */
+      border-radius: 50%;
       text-decoration: none;
-      background-color: white; /* Transparent background */
+      background-color: white;
       transition: all 0.3s ease;
-      position: relative; /* For positioning the arrow */
+      position: relative;
     }
 
     .return-icon::before {
-      content: '<'; /* Arrow icon */
+      content: '<';
       font-size: 20px;
-      color: #333; /* Arrow color */
+      color: #333;
       position: absolute;
     }
 
     .return-icon:hover {
-      background-color: #d3d3d3; /* Light grey on hover */
-      transform: scale(1.1); /* Slight zoom effect */
+      background-color: #d3d3d3;
+      transform: scale(1.1);
     }
 
     .return-icon:hover::before {
-      color: #800080; /* Purple arrow on hover */
+      color: #800080;
     }
 
     .header h1 {
       margin: 0;
       font-size: 28px;
       color: #333;
-      flex-grow: 1; /* Allow the title to take up remaining space */
+      flex-grow: 1;
     }
 
     .container {
@@ -85,24 +85,24 @@
       margin-top: 5px;
     }
 
-    /* Try App Button Styling */
     .title-section .try-app {
-      background-color: #800080; /* Dark purple background */
-      color: #ffffff; /* White text */
+      background-color: #800080;
+      color: #ffffff;
       font-size: 18px;
       font-weight: bold;
       padding: 12px 22px;
       border-radius: 8px;
       text-decoration: none;
-      transition: all 0.3s ease; /* Smooth transition for hover */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: inline-block;
     }
 
     .title-section .try-app:hover {
-      background-color: #f5e0f7; /* Light purple background */
-      color: #800080; /* Purple text */
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
-      transform: translateY(-2px); /* Slight lift effect */
+      background-color: #f5e0f7;
+      color: #800080;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
     }
 
     /* Video Section */
@@ -111,13 +111,14 @@
       margin-bottom: 20px;
     }
 
-    .video-section iframe, .video-section video {
+    .video-section iframe, .video-section img {
       width: 100%;
       max-width: 800px;
       height: 400px;
       border: none;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
     }
 
     /* Description Section */
@@ -152,15 +153,15 @@
     }
 
     .screenshots {
-      display: flex; /* Arrange images in a row */
-      flex-wrap: wrap; /* Allow wrapping to the next line */
-      gap: 20px; /* Add space between images */
-      justify-content: center; /* Center-align the images */
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
 
     .screenshots img {
-      max-width: 500px; /* Adjust size of images */
-      height: auto; /* Maintain aspect ratio */
+      max-width: 500px;
+      height: auto;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -184,18 +185,18 @@
           {{ page.year }}
         </div>
       </div>
+      
+      {% if page.app_link and page.app_link != "" %}
       <a href="{{ page.app_link }}" class="try-app">Try App</a>
+      {% endif %}
     </div>
 
     <!-- Video Section -->
     <div class="video-section">
-      {% if page.youtube %}
+      {% if page.youtube and page.youtube != "" %}
       <iframe src="https://www.youtube.com/embed/{{ page.youtube }}" allowfullscreen></iframe>
       {% else %}
-      <video controls>
-        <source src="{{ page.video }}" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
+      <img src="{{ page.image }}" alt="Project Image">
       {% endif %}
     </div>
 
@@ -206,13 +207,16 @@
     </div>
 
     <!-- Screenshots Section -->
+    {% if page.screenshots and page.screenshots.size > 0 %}
     <div class="screenshots-container">
+      <h2>Screenshots</h2>
       <div class="screenshots">
         {% for screenshot in page.screenshots %}
         <img src="{{ site.baseurl }}{{ screenshot }}" alt="Screenshot">
         {% endfor %}
       </div>
     </div>
+    {% endif %}
   </div>
 </body>
 </html>
