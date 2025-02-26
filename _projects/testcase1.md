@@ -9,8 +9,7 @@ description: >
 youtube: "FWUP_jTtZ4w"
 image: "/assets/images/burnlink.jpg"
 screenshots:
-    - /assets/images/kakao1.jpg
-    - /assets/images/kakao2.jpg
+    - /static/assets/images/logo.png
 app_link: "https://pioneer.vzr.au/"
 permalink: /projects/testcase1/
 tags:
