@@ -7,9 +7,9 @@ mentor: "Dr Vikram "
 description: >
   testing! I am testing the student edit !@@@@@@
 youtube: "FWUP_jTtZ4w"
-image: "/assets/images/wp3653568-88rising-wallpapers.jpg"
+image: "/assets/images/cat.jpg"
 screenshots:
-    - /assets/images/logo.png
+    - /assets/images/cat.jpg
 app_link: "https://pioneer.vzr.au/"
 permalink: /projects/testcase1/
 tags:
